@@ -1,0 +1,14 @@
+<div
+  #popoverWrapperEl
+  class="popover-content"
+  [@fadeIn]="animationState"
+  (@fadeIn.done)="animationEnd($event)"
+>
+  <ng-container *ngIf="template; else textContent">
+    <ng-container *ngTemplateOutlet="template"></ng-container>
+  </ng-container>
+
+  <ng-template #textContent>
+    {{ popoverConfig.content }}
+  </ng-template>
+</div>

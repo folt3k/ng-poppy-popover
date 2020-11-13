@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { NgPoppyModule } from 'ng-poppy';
+import { PopoverModule } from 'ng-poppy';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { NgPoppyModule } from 'ng-poppy';
   ],
   imports: [
     BrowserModule,
-    NgPoppyModule
+    PopoverModule
   ],
   providers: [],
   bootstrap: [AppComponent]

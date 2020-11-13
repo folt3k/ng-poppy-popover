@@ -2,6 +2,7 @@
  * Public API Surface of ng-poppy
  */
 
-export * from './lib/ng-poppy.service';
-export * from './lib/ng-poppy.component';
-export * from './lib/ng-poppy.module';
+export * from './lib/popover/popover.module';
+export * from './lib/popover/directives';
+export * from './lib/popover/components/popover-select/popover-select.component';
+export * from './lib/popover/components/popover-menu/popover-menu.component';
