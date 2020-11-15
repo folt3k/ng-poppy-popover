@@ -16,7 +16,8 @@ import {
 } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
 import { fromEvent, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { debounceTime, skipUntil, takeUntil } from 'rxjs/operators';
+
 import { POPOVER_CONFIG, PopoverConfig } from '../../popover.token';
 import { PopoverService } from '../../services/popover.service';
 import { PopoverType } from '../../popover.interface';
@@ -220,16 +221,16 @@ export class PopoverContentComponent implements OnDestroy, AfterViewInit {
       item.clicked$.pipe(takeUntil(this.destroy$), takeUntil(this.menuItemsChanged)).subscribe(() => {
         this.onClickMenuItem(item);
       });
-      // item.hovered$
-      //   .pipe(
-      //     takeUntil(this.destroy$),
-      //     takeUntil(this.menuItemsChanged),
-      //     debounceTime(0),
-      //     skipUntil(this.animationEnd$)
-      //   )
-      //   .subscribe(() => {
-      //     this.onHoverMenuItem(item);
-      //   });
+      item.hovered$
+        .pipe(
+          takeUntil(this.destroy$),
+          takeUntil(this.menuItemsChanged),
+          debounceTime(0),
+          skipUntil(this.animationEnd$)
+        )
+        .subscribe(() => {
+          this.onHoverMenuItem(item);
+        });
     });
   }
 
@@ -263,20 +264,17 @@ export class PopoverContentComponent implements OnDestroy, AfterViewInit {
       providedValues.content = item.submenu;
     }
 
-    this.subMenuComponentRef = factory.create(
-      Injector.create([
-        {
-          provide: POPOVER_CONFIG,
-          useValue: providedValues,
-        },
-      ])
-    );
+    const injector = Injector.create([
+      {
+        provide: POPOVER_CONFIG,
+        useValue: providedValues,
+      },
+    ]);
 
+    this.subMenuComponentRef = this.popoverService.append(injector, null, options, this.parentPopoverRef);
     this.subMenuComponentRef.instance.componentRef = this.subMenuComponentRef;
     this.subMenuComponentRef.instance.parentPopoverRef = this.parentPopoverRef;
-
     this.subMenuComponentRef.hostView.detectChanges();
-    // this.popoverService.append(this.subMenuComponentRef, null, options, this.parentPopoverRef);
   }
 
   private isMenu(): boolean {

@@ -49,14 +49,14 @@ $tag-size-sm: 24px;
   position: absolute;
   top: 12px;
   right: 8px;
-  color: $grey-ultralight;
+  color: $grey-lighten;
 }
 
 .poppy-select__clear {
   position: absolute;
   top: 9px;
   right: 32px;
-  color: $grey-ultralight;
+  color: $grey-lighten;
 }
 
 .poppy-chip {
@@ -95,7 +95,7 @@ $tag-size-sm: 24px;
   padding-top: 1px;
 
   &:hover {
-    background-color: $grey-lighter;
+    background-color: $grey-lighten;
   }
 }
 
@@ -104,7 +104,7 @@ $tag-size-sm: 24px;
 }
 
 .poppy-select__placeholder {
-  color: $grey-ultralight;
+  color: $grey-lighten;
 }
 
 .poppy-select__loader {

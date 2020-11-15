@@ -9,20 +9,21 @@ import {
   ElementRef,
   NgZone,
   Directive,
+  OnInit,
 } from '@angular/core';
 import { PopoverContentComponent } from '../components/popover-content/popover-content.component';
 import { Subject } from 'rxjs';
 
 import { PopoverService } from '../services/popover.service';
 import { PopoverAppendOptions } from '../models/popover-append-options.model';
-import { PopoverTrigger } from '../popover.interface';
+import { PopoverTrigger, PopoverType } from '../popover.interface';
 
 @Directive()
-export abstract class BasePopoverDirective implements OnDestroy {
+export abstract class BasePopoverDirective implements OnDestroy, OnInit {
   @Input() trigger: PopoverTrigger = 'click';
   // Options
   @Input() delayClose: number = null;
-  @Input() closeOnTriggerAgain = true;
+  @Input() closeOnTriggerAgain = undefined;
   @Input() closeOnClickOutside = true;
   @Input() hideOnScroll: boolean = false;
   @Input() innerClass: string;
@@ -31,6 +32,7 @@ export abstract class BasePopoverDirective implements OnDestroy {
   @Output() afterShow = new EventEmitter();
 
   popoverComponentRef: ComponentRef<PopoverContentComponent>;
+  protected type: PopoverType = 'popover';
   protected destroy$ = new Subject();
 
   protected constructor(
@@ -39,6 +41,10 @@ export abstract class BasePopoverDirective implements OnDestroy {
     public readonly hostElement: ElementRef,
     protected readonly ngZone: NgZone
   ) {}
+
+  ngOnInit(): void {
+    this.setOptions();
+  }
 
   ngOnDestroy(): void {
     this.destroy$.next();
@@ -73,5 +79,11 @@ export abstract class BasePopoverDirective implements OnDestroy {
     this.ngZone.run(() => {
       this.popoverService.remove(popoverRef);
     });
+  }
+
+  private setOptions(): void {
+    if (this.closeOnTriggerAgain === undefined) {
+      this.closeOnTriggerAgain = !(this.type === 'tooltip' || this.trigger === 'hover');
+    }
   }
 }

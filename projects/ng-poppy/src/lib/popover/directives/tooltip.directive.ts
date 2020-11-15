@@ -1,4 +1,12 @@
-import { ComponentFactoryResolver, Directive, ElementRef, Input, NgZone, OnInit } from '@angular/core';
+import {
+  ComponentFactoryResolver,
+  Directive,
+  ElementRef,
+  Input,
+  NgZone,
+  OnInit,
+  TemplateRef,
+} from '@angular/core';
 
 import { PopoverDirective } from './popover.directive';
 import { PopoverService } from '../services/popover.service';
@@ -8,7 +16,7 @@ import { PopoverTrigger, PopoverType } from '../popover.interface';
   selector: '[poppyTooltip]',
 })
 export class TooltipDirective extends PopoverDirective implements OnInit {
-  @Input() poppyTooltip: string;
+  @Input() poppyTooltip: string | TemplateRef<any>;
 
   trigger: PopoverTrigger = 'hover';
   type: PopoverType = 'tooltip';

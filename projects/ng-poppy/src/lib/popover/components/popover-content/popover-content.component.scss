@@ -52,18 +52,15 @@ poppy-content {
 
   &:hover {
     background-color: $popover-item-bg-hover;
-    color: white;
   }
 }
 
 .popover-menu-item--focused {
   background-color: $popover-item-bg-hover;
-  color: white;
 }
 
 .popover-menu-item--selected {
   background-color: $popover-item-bg-selected;
-  color: white;
 }
 
 .popover-menu-item--hidden {

@@ -23,8 +23,6 @@ import { PopoverType } from '../popover.interface';
 export class PopoverDirective extends BasePopoverDirective implements AfterViewInit {
   @Input() poppyPopover: TemplateRef<HTMLElement> | string;
 
-  protected type: PopoverType = 'popover';
-
   constructor(
     protected readonly componentFactoryResolver: ComponentFactoryResolver,
     protected readonly popoverService: PopoverService,
