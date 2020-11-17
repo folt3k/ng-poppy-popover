@@ -10,7 +10,7 @@ import {
 import { fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { POPOVER_CONFIG, PopoverConfig } from '../popover.token';
-import { PopoverContextMenuPosition, PopoverMenuType } from '../popover.interface';
+import { PopoverBounds, PopoverContextMenuPosition, PopoverMenuType } from '../popover.interface';
 import { PopoverService } from '../services/popover.service';
 import { PopoverAppendOptions } from '../models/popover-append-options.model';
 import { BasePopoverDirective } from './base-popover';
@@ -68,7 +68,7 @@ export class PopoverMenuDirective extends BasePopoverDirective implements AfterV
 
   protected getPopoverComponentInjector(): Injector {
     const providerValues: PopoverConfig = {
-      bounds: this.hostElement.nativeElement.getBoundingClientRect(),
+      bounds: this.getBounds(),
       type: this.type,
       triggerElement: this.hostElement,
       triggerDirective: this,
@@ -77,11 +77,6 @@ export class PopoverMenuDirective extends BasePopoverDirective implements AfterV
       menuRef: this.poppyMenu,
       innerClass: this.innerClass,
     };
-
-    if (this.type === 'context') {
-      providerValues.bounds.top = this.contextMenuPosition.top;
-      providerValues.bounds.left = this.contextMenuPosition.left;
-    }
 
     return Injector.create([
       {
@@ -126,5 +121,13 @@ export class PopoverMenuDirective extends BasePopoverDirective implements AfterV
     });
 
     this.appendToLayer(options);
+  }
+
+  private getBounds(): PopoverBounds {
+    if (this.type === 'context') {
+      return { top: this.contextMenuPosition.top, left: this.contextMenuPosition.left };
+    } else {
+      return this.hostElement.nativeElement.getBoundingClientRect();
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { ElementRef, ComponentRef } from '@angular/core';
+import { ElementRef } from '@angular/core';
 import { PopoverConfig } from '../popover.token';
 import { PopoverType } from '../popover.interface';
 import { PopoverContentComponent } from '../components/popover-content/popover-content.component';

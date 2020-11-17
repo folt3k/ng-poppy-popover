@@ -26,10 +26,18 @@
 <button [poppyTooltip]="tooltipTmp">Hover to show tooltip with template</button>
 <ng-template #tooltipTmp><strong>Tooltip with template</strong> </ng-template>
 
-<h2>Menu with submenus</h2>
+<h2>Nested menu</h2>
 <hr />
 
-<button [poppyMenu]="extendedMenu">Show menu with submenus</button>
+<button [poppyMenu]="extendedMenu" >Show menu with submenus</button>
+
+<h2>Context menu</h2>
+<hr />
+
+<div style="background-color: red; width: 200px; height: 40px" [poppyMenu]="extendedMenu" type="context" trigger="hover">
+  Contetx menu
+</div>
+
 <poppy-menu #extendedMenu="poppyMenu">
   <li poppy-menu-item [submenu]="submenu">
     Test
@@ -51,3 +59,7 @@
   </li>
   <li poppy-menu-item>Test 2</li>
 </poppy-menu>
+
+<code-snippet fromFile="shared/code-snippet/code-snippet.component.ts"></code-snippet>
+<code-snippet fromFile="shared/code-snippet/code-snippet.component.spec.ts"></code-snippet>
+

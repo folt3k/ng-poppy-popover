@@ -8,6 +8,8 @@ export type PopoverMenuType = 'context' | 'menu';
 
 export type PopoverTrigger = 'click' | 'hover' | 'manual';
 
+export type PopoverBounds = Partial<ClientRect>;
+
 export interface PopoverMenuItem {
   name: string;
   desc?: string;
