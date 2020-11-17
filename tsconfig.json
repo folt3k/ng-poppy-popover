@@ -14,10 +14,10 @@
       "path": "./projects/ng-poppy/tsconfig.spec.json"
     },
     {
-      "path": "./projects/example/tsconfig.app.json"
+      "path": "./projects/demo/tsconfig.app.json"
     },
     {
-      "path": "./projects/example/tsconfig.spec.json"
+      "path": "./projects/demo/tsconfig.spec.json"
     }
 ]
 }
