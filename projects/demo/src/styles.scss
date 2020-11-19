@@ -2,6 +2,19 @@
 
 @import "~highlight.js/scss/docco";
 
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: rgba(0,0,0,.85);
+}
+
 body {
   background-color: #fafafa;
+}
+
+main {
+  margin-top: 3rem;
+  padding: 0 2rem;
 }
