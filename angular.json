@@ -63,6 +63,7 @@
             "polyfills": "projects/demo/src/polyfills.ts",
             "tsConfig": "projects/demo/tsconfig.app.json",
             "aot": true,
+            "baseHref": "https://folt3k.github.io/ng-poppy-dev/",
             "assets": [
               "projects/demo/src",
               "projects/demo/src/favicon.ico",
