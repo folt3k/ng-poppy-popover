@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PopoverModule } from 'ng-poppy';
 
 import { CodeSnippetComponent } from './code-snippet/code-snippet.component';
 import { DemoWidgetComponent } from './demo-widget/demo-widget.component';
 
 @NgModule({
   declarations: [CodeSnippetComponent, DemoWidgetComponent],
-  imports: [CommonModule],
-  exports: [CodeSnippetComponent, DemoWidgetComponent],
+  imports: [CommonModule, PopoverModule],
+  exports: [CodeSnippetComponent, DemoWidgetComponent, PopoverModule],
 })
 export class SharedModule {}

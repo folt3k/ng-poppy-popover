@@ -4,7 +4,7 @@ import { PopoverEventType } from './services/events.service';
 
 export type PopoverType = 'popover' | 'context' | 'menu' | 'submenu' | 'tooltip';
 
-export type PopoverMenuType = 'context' | 'menu';
+export type  PopoverMenuType = 'context' | 'menu';
 
 export type PopoverTrigger = 'click' | 'hover' | 'manual';
 

@@ -1,0 +1,13 @@
+<button
+  [poppyPopover]="popover"
+  [trigger]="'manual'"
+  [closeOnClickOutside]="false"
+  #p="poppyPopover"
+  (click)="p.open()"
+>
+  Click to open popover
+</button>
+
+<button (click)="p.close()">Click to close popover</button>
+
+<ng-template #popover>Manual trigger popover</ng-template>

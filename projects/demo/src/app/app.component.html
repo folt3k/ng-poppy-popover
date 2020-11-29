@@ -3,31 +3,32 @@
 <main>
   <layout-menu></layout-menu>
   <div class="container">
-    <demo-widget [title]="'Basic'" [codeSnippets]="['shared/code-snippet/code-snippet.component.ts', 'shared/code-snippet/code-snippet.component.html']">
-      <div example>
-        <button [poppyPopover]="pop">Show basic</button>
-        <ng-template #pop>Popover..</ng-template>
-      </div>
-      <div content>This is basic popover usage.</div>
-    </demo-widget>
+    <router-outlet></router-outlet>
+<!--    <demo-widget [title]="'Basic'" [codeSnippets]="['shared/code-snippet/code-snippet.component.ts', 'shared/code-snippet/code-snippet.component.html']">-->
+<!--      <div example>-->
+<!--        <button [poppyPopover]="pop">Show basic</button>-->
+<!--        <ng-template #pop>Popover..</ng-template>-->
+<!--      </div>-->
+<!--      <div content>This is basic popover usage.</div>-->
+<!--    </demo-widget>-->
 
-    <demo-widget [title]="'Menu'" [codeSnippets]="['shared/code-snippet/code-snippet.component.ts']">
-      <div example>
-        <button [poppyMenu]="menu">Show menu</button>
-        <poppy-menu #menu>
-          <li poppy-menu-item>Test 1</li>
-          <li poppy-menu-item>Test 2</li>
-        </poppy-menu>
-      </div>
-      <div content>This is basic menu.</div>
-    </demo-widget>
+<!--    <demo-widget [title]="'Menu'" [codeSnippets]="['shared/code-snippet/code-snippet.component.ts']">-->
+<!--      <div example>-->
+<!--        <button [poppyMenu]="menu">Show menu</button>-->
+<!--        <poppy-menu #menu>-->
+<!--          <li poppy-menu-item>Test 1</li>-->
+<!--          <li poppy-menu-item>Test 2</li>-->
+<!--        </poppy-menu>-->
+<!--      </div>-->
+<!--      <div content>This is basic menu.</div>-->
+<!--    </demo-widget>-->
 
-    <demo-widget [title]="'Nested menu'" [codeSnippets]="['shared/code-snippet/code-snippet.component.ts']">
-      <div example>
-        <button [poppyMenu]="extendedMenu">Show nested menu</button>
-      </div>
-      <div content>This is menu with nested menus.</div>
-    </demo-widget>
+<!--    <demo-widget [title]="'Nested menu'" [codeSnippets]="['shared/code-snippet/code-snippet.component.ts']">-->
+<!--      <div example>-->
+<!--        <button [poppyMenu]="extendedMenu">Show nested menu</button>-->
+<!--      </div>-->
+<!--      <div content>This is menu with nested menus.</div>-->
+<!--    </demo-widget>-->
 
     <!--    <h2>Hover</h2>-->
     <!--    <hr />-->
@@ -69,27 +70,27 @@
     <!--      Contetx menu-->
     <!--    </div>-->
 
-    <poppy-menu #extendedMenu="poppyMenu">
-      <li poppy-menu-item [submenu]="submenu">
-        Test
-        <poppy-menu #submenu="poppyMenu">
-          <li poppy-menu-item [submenu]="submenu2">
-            Submenu item 1 deep 1
-            <poppy-menu #submenu2="poppyMenu">
-              <li poppy-menu-item>Submenu item 1 deep 2</li>
-              <li poppy-menu-item>Submenu item 2 deep 2</li>
-            </poppy-menu>
-          </li>
-          <li poppy-menu-item [submenu]="submenu3">
-            Submenu item 2 deep 1
-            <poppy-menu #submenu3="poppyMenu">
-              <li poppy-menu-item>Submenu item 2 deep 2</li>
-            </poppy-menu>
-          </li>
-        </poppy-menu>
-      </li>
-      <li poppy-menu-item>Test 2</li>
-    </poppy-menu>
+<!--    <poppy-menu #extendedMenu="poppyMenu">-->
+<!--      <li poppy-menu-item [submenu]="submenu">-->
+<!--        Test-->
+<!--        <poppy-menu #submenu="poppyMenu">-->
+<!--          <li poppy-menu-item [submenu]="submenu2">-->
+<!--            Submenu item 1 deep 1-->
+<!--            <poppy-menu #submenu2="poppyMenu">-->
+<!--              <li poppy-menu-item>Submenu item 1 deep 2</li>-->
+<!--              <li poppy-menu-item>Submenu item 2 deep 2</li>-->
+<!--            </poppy-menu>-->
+<!--          </li>-->
+<!--          <li poppy-menu-item [submenu]="submenu3">-->
+<!--            Submenu item 2 deep 1-->
+<!--            <poppy-menu #submenu3="poppyMenu">-->
+<!--              <li poppy-menu-item>Submenu item 2 deep 2</li>-->
+<!--            </poppy-menu>-->
+<!--          </li>-->
+<!--        </poppy-menu>-->
+<!--      </li>-->
+<!--      <li poppy-menu-item>Test 2</li>-->
+<!--    </poppy-menu>-->
 
     <!--    <form>-->
     <!--      <h2>Select</h2>-->

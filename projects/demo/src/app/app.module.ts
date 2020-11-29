@@ -6,17 +6,19 @@ import { AppComponent } from './app.component';
 import { PopoverModule } from 'ng-poppy';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
-import { RouterTestingModule } from '@angular/router/testing';
+import { BasicModule } from './pages/basic/basic.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterTestingModule.withRoutes([]),
+    AppRoutingModule,
     CoreModule,
     SharedModule,
     PopoverModule,
+    BasicModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
