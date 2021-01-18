@@ -1,0 +1,9 @@
+<button [poppyMenu]="menu">Show menu</button>
+
+<p>Selected option: {{ selectedOption || '---' }}</p>
+
+<poppy-menu #menu>
+  <li *ngFor="let option of options" poppy-menu-item (clicked)="onOptionClick(option)">
+    {{ option }}
+  </li>
+</poppy-menu>

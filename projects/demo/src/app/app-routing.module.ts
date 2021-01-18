@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BasicComponent } from './pages/basic/basic.component';
+import { MenuComponent } from './pages/menu/menu.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'components/basic',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'components',
@@ -14,6 +15,10 @@ const routes: Routes = [
       {
         path: 'basic',
         component: BasicComponent,
+      },
+      {
+        path: 'menu',
+        component: MenuComponent,
       },
     ],
   },

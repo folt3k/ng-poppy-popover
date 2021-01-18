@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { BasicModule } from './pages/basic/basic.module';
 import { AppRoutingModule } from './app-routing.module';
+import { MenuModule } from './pages/menu/menu.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
     SharedModule,
     PopoverModule,
     BasicModule,
+    MenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

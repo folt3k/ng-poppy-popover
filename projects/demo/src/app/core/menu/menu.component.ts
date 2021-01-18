@@ -45,7 +45,7 @@ export class MenuComponent implements OnInit {
     this.router.events
       .pipe(
         filter((e) => e instanceof NavigationEnd),
-        map((e: RouterEvent) => e.url)
+        map((e: NavigationEnd) => e.urlAfterRedirects)
       )
       .subscribe((path) => {
         this.updateActiveMenuItem(path);

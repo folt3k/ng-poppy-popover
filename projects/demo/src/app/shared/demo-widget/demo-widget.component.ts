@@ -14,6 +14,7 @@ export class DemoWidgetComponent implements OnInit, AfterViewInit {
   showSeparator: boolean = false;
   showCode: boolean = false;
   selectedSnippet: string;
+  show: boolean = false;
 
   constructor() {}
 
@@ -25,6 +26,9 @@ export class DemoWidgetComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       if (this.contentEl.nativeElement.querySelector('[content]')) {
         this.showSeparator = true;
+        this.show = true;
+      } else {
+        this.show = true;
       }
     });
   }
