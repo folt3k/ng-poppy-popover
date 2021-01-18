@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
 
 export interface MenuItem {
   label: string;
@@ -17,28 +19,40 @@ export class MenuComponent implements OnInit {
   schema: MenuSchema = [
     {
       label: 'Basic popover',
-      path: 'base',
+      path: '/components/basic',
     },
     {
       label: 'Menu',
-      path: 'menu',
-      active: true,
+      path: '/components/menu',
     },
     {
       label: 'Nested menu',
-      path: 'nested-menu',
+      path: '/components/nested-menu',
     },
     {
       label: 'Context menu',
-      path: 'context-menu',
+      path: '/components/context-menu',
     },
     {
       label: 'Tooltip',
-      path: 'tooltip',
+      path: '/components/tooltip',
     },
   ];
 
-  constructor() {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.router.events
+      .pipe(
+        filter((e) => e instanceof NavigationEnd),
+        map((e: RouterEvent) => e.url)
+      )
+      .subscribe((path) => {
+        this.updateActiveMenuItem(path);
+      });
+  }
+
+  private updateActiveMenuItem(path: string): void {
+    this.schema = this.schema.map((item) => ({ ...item, active: path === item.path }));
+  }
 }
