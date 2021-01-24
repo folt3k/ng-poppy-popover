@@ -1,11 +1,11 @@
-<div class="wrapper" [hidden]="!show">
+<div class="wrapper">
   <div class="title">
     <h2>{{ title }}</h2>
     <div class="code" (click)="toggleCode()">
       code <img src="https://gw.alipayobjects.com/zos/antfincdn/Z5c7kzvi30/expand.svg" alt="" />
     </div>
   </div>
-  <div #content class="content">
+  <div class="content">
     <div [hidden]="!showCode" class="snippets">
       <div class="tabs">
         <div
@@ -23,8 +23,6 @@
         [hidden]="selectedSnippet !== snippet"
       ></code-snippet>
     </div>
-    <ng-content select="[example]"></ng-content>
-    <div *ngIf="showSeparator" class="separator"></div>
-    <ng-content select="[content]"></ng-content>
+    <ng-content></ng-content>
   </div>
 </div>

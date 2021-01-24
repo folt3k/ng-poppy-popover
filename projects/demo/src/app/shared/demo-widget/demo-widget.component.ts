@@ -11,10 +11,8 @@ export class DemoWidgetComponent implements OnInit, AfterViewInit {
   @Input() title: string;
   @Input() codeSnippets: string[] = [];
 
-  showSeparator: boolean = false;
   showCode: boolean = false;
   selectedSnippet: string;
-  show: boolean = false;
 
   constructor() {}
 
@@ -22,16 +20,7 @@ export class DemoWidgetComponent implements OnInit, AfterViewInit {
     this.selectedSnippet = this.codeSnippets[0];
   }
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      if (this.contentEl.nativeElement.querySelector('[content]')) {
-        this.showSeparator = true;
-        this.show = true;
-      } else {
-        this.show = true;
-      }
-    });
-  }
+  ngAfterViewInit(): void {}
 
   toggleCode(): void {
     this.showCode = !this.showCode;
