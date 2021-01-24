@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BasicComponent } from './pages/basic/basic.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { TooltipComponent } from './pages/tooltip/tooltip.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
       {
         path: 'menu',
         component: MenuComponent,
+      },
+      {
+        path: 'tooltip',
+        component: TooltipComponent,
       },
     ],
   },

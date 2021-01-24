@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { BasicModule } from './pages/basic/basic.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MenuModule } from './pages/menu/menu.module';
+import { TooltipModule } from './pages/tooltip/tooltip.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { MenuModule } from './pages/menu/menu.module';
     PopoverModule,
     BasicModule,
     MenuModule,
+    TooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

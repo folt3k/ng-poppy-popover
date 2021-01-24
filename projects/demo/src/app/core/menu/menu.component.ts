@@ -26,12 +26,12 @@ export class MenuComponent implements OnInit {
       path: '/components/menu',
     },
     {
-      label: 'Nested menu',
-      path: '/components/nested-menu',
+      label: 'Select',
+      path: '/components/select',
     },
     {
-      label: 'Context menu',
-      path: '/components/context-menu',
+      label: 'Multiselect',
+      path: '/components/multiselect',
     },
     {
       label: 'Tooltip',
