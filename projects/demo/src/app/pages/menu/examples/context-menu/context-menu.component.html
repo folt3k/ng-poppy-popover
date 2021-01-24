@@ -1,0 +1,25 @@
+<div [poppyMenu]="animals" type="context" class="context-menu-area">Right click to show context menu</div>
+
+<poppy-menu #animals="poppyMenu">
+  <button poppy-menu-item [submenu]="vertebrates">Vertebrates</button>
+  <button poppy-menu-item [submenu]="invertebrates">Invertebrates</button>
+</poppy-menu>
+
+<poppy-menu #vertebrates="poppyMenu">
+  <button poppy-menu-item [submenu]="fish">Fishes</button>
+  <button poppy-menu-item>Amphibians</button>
+</poppy-menu>
+
+<poppy-menu #invertebrates="poppyMenu">
+  <button poppy-menu-item>Insects</button>
+  <button poppy-menu-item>Molluscs</button>
+  <button poppy-menu-item>Crustaceans</button>
+</poppy-menu>
+
+<poppy-menu #fish="poppyMenu">
+  <button poppy-menu-item>Baikal oilfish</button>
+  <button poppy-menu-item>Bala shark</button>
+  <button poppy-menu-item>Ballan wrasse</button>
+  <button poppy-menu-item>Bamboo shark</button>
+  <button poppy-menu-item>Banded killifish</button>
+</poppy-menu>
