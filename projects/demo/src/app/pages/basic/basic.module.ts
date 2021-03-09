@@ -6,9 +6,16 @@ import { BasicComponent } from './basic.component';
 import { SharedModule } from '../../shared/shared.module';
 import { HoverComponent } from './examples/hover/hover.component';
 import { ManualComponent } from './examples/manual/manual.component';
+import { CustomPositionComponent } from './examples/custom-position/custom-position.component';
 
 @NgModule({
-  declarations: [BasicUsageComponent, BasicComponent, HoverComponent, ManualComponent],
+  declarations: [
+    BasicUsageComponent,
+    BasicComponent,
+    HoverComponent,
+    ManualComponent,
+    CustomPositionComponent,
+  ],
   imports: [CommonModule, SharedModule],
   exports: [BasicComponent],
 })
