@@ -1,6 +1,12 @@
 import { ElementRef, InjectionToken, TemplateRef } from '@angular/core';
 
-import {PopoverBounds, PopoverMenu, PopoverTrigger, PopoverType} from './popover.interface';
+import {
+  PopoverBounds,
+  PopoverMenu,
+  PopoverPosition,
+  PopoverTrigger,
+  PopoverType,
+} from './popover.interface';
 import { BasePopoverDirective } from './directives/base-popover';
 import { PopoverMenuItemDirective } from './directives/popover-menu-item.directive';
 import { PopoverMenuComponent } from './components/popover-menu/popover-menu.component';
@@ -23,4 +29,5 @@ export interface PopoverConfig {
   closeOnClickItem?: boolean;
   selectable?: boolean;
   innerClass?: string;
+  position?: PopoverPosition;
 }

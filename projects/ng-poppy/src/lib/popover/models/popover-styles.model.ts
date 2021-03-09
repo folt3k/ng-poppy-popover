@@ -1,10 +1,11 @@
 import { ElementRef } from '@angular/core';
 import { PopoverConfig } from '../popover.token';
-import { PopoverType } from '../popover.interface';
+import { PopoverPosition, PopoverType } from '../popover.interface';
 import { PopoverContentComponent } from '../components/popover-content/popover-content.component';
 
 const SPACE_FROM_BOTTOM = 20;
 const SPACE_FROM_TOP = 10;
+const HORIZONTAL_SPACE = 10;
 const POSITION_MEASURE_UNIT = 'px';
 
 export class PopoverStyles {
@@ -12,6 +13,7 @@ export class PopoverStyles {
   private hostElement: ElementRef<any>;
   private config: PopoverConfig;
   private type: PopoverType;
+  private position: PopoverPosition;
   private initHostElementWidth: number = 0;
 
   constructor(popover: PopoverContentComponent) {
@@ -19,6 +21,7 @@ export class PopoverStyles {
     this.hostElement = popover.element;
     this.config = popover.popoverConfig;
     this.type = this.config.type;
+    this.position = this.config.position;
   }
 
   init(): void {
@@ -54,7 +57,7 @@ export class PopoverStyles {
     this.hostElement.nativeElement.style.visibility = 'hidden';
 
     setTimeout(() => {
-      this.initHostElementWidth = this.hostElement.nativeElement.offsetWidth;
+      this.initHostElementWidth = this.hostElement.nativeElement.offsetWidth + 1;
       this.hostElement.nativeElement.style.minWidth = this.initHostElementWidth + 'px';
     });
   }
@@ -83,11 +86,15 @@ export class PopoverStyles {
         } else {
           const newPos = triggerBounds.top - elementHeight - SPACE_FROM_TOP;
           if (newPos > 0) {
-            this.setPositionStyle('top', triggerBounds.top - elementHeight - SPACE_FROM_TOP);
+            switch (this.position) {
+              case 'bottom':
+                this.setPositionStyle('top', triggerBounds.top - elementHeight - SPACE_FROM_TOP);
+                break;
+              case 'top':
+                this.setPositionStyle('top', triggerBounds.top - elementHeight - SPACE_FROM_TOP);
+            }
           } else {
             this.hostElement.nativeElement.style.height =
-              windowHeight - hostTopPosition - SPACE_FROM_BOTTOM + POSITION_MEASURE_UNIT;
-            this.hostElement.nativeElement.querySelector('.popover-content').style.height =
               windowHeight - hostTopPosition - SPACE_FROM_BOTTOM + POSITION_MEASURE_UNIT;
           }
         }
@@ -95,7 +102,21 @@ export class PopoverStyles {
         if (this.config.type === 'context') {
           this.setPositionStyle('top', +this.config.bounds.top + SPACE_FROM_TOP);
         } else {
-          this.setPositionStyle('top', triggerBounds.top + triggerBounds.height + SPACE_FROM_TOP);
+          switch (this.position) {
+            case 'bottom':
+              this.setPositionStyle('top', triggerBounds.top + triggerBounds.height + SPACE_FROM_TOP);
+              break;
+            case 'top':
+              this.setPositionStyle('top', triggerBounds.top - elementHeight - SPACE_FROM_TOP);
+              break;
+            case 'left':
+            case 'right':
+              this.setPositionStyle(
+                'top',
+                triggerBounds.top - (elementHeight / 2 - triggerBounds.height / 2)
+              );
+              break;
+          }
         }
       }
     }
@@ -116,7 +137,7 @@ export class PopoverStyles {
   private setLeftPosition(): void {
     const windowWidth = window.innerWidth;
     const elementWidth = this.hostElement.nativeElement.getBoundingClientRect().width;
-    const hostBounds = this.config.triggerElement.nativeElement.getBoundingClientRect();
+    const triggerBounds = this.config.triggerElement.nativeElement.getBoundingClientRect();
 
     if (this.isContextType) {
       if (+this.config.bounds.left >= windowWidth / 2) {
@@ -125,10 +146,27 @@ export class PopoverStyles {
         this.setPositionStyle('left', this.defaultLeftPosition);
       }
     } else if (this.config.triggerDirective) {
-      if (hostBounds.left >= windowWidth / 2) {
-        this.setPositionStyle('left', hostBounds.right - elementWidth);
-      } else {
-        this.setPositionStyle('left', hostBounds.left);
+      switch (this.position) {
+        case 'bottom':
+        case 'top':
+          this.setPositionStyle('left', triggerBounds.left);
+          break;
+        case 'left':
+          this.setPositionStyle('left', triggerBounds.left - elementWidth - HORIZONTAL_SPACE);
+          break;
+        case 'right':
+          this.setPositionStyle('left', triggerBounds.left + triggerBounds.width + HORIZONTAL_SPACE);
+          break;
+      }
+
+      const hostRecBounds = this.hostElement.nativeElement.getBoundingClientRect();
+
+      if (hostRecBounds.right > windowWidth - 20) {
+        this.setPositionStyle('left', hostRecBounds.left - (hostRecBounds.right - windowWidth + 20));
+      }
+
+      if (hostRecBounds.left < 0) {
+        this.setPositionStyle('left', 15);
       }
     } else {
       const hostBounds = this.config.submenuTriggeredItem.element.nativeElement.getBoundingClientRect();
@@ -148,13 +186,12 @@ export class PopoverStyles {
       const windowWidth = window.innerWidth;
       const hostElBounds = this.hostElement.nativeElement.getBoundingClientRect();
 
-      this.hostElement.nativeElement.style.minWidth = triggerBounds.width + POSITION_MEASURE_UNIT;
+      this.hostElement.nativeElement.style.minWidth = this.initHostElementWidth + POSITION_MEASURE_UNIT;
 
       if (!this.isMenuType) {
-        if (hostElBounds.left < 0 || hostElBounds.right > windowWidth) {
+        if (hostElBounds.width > windowWidth || this.initHostElementWidth > windowWidth - 30) {
           this.hostElement.nativeElement.style.width = windowWidth - 30 + POSITION_MEASURE_UNIT;
-          this.hostElement.nativeElement.querySelector('.popover-content').style.minWidth =
-            windowWidth - 30 + POSITION_MEASURE_UNIT;
+          this.hostElement.nativeElement.style.minWidth = windowWidth - 30 + POSITION_MEASURE_UNIT;
           this.setPositionStyle('left', 15);
         }
       }

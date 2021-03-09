@@ -4,9 +4,11 @@ import { PopoverEventType } from './services/events.service';
 
 export type PopoverType = 'popover' | 'context' | 'menu' | 'submenu' | 'tooltip';
 
-export type  PopoverMenuType = 'context' | 'menu';
+export type PopoverMenuType = 'context' | 'menu';
 
 export type PopoverTrigger = 'click' | 'hover' | 'manual';
+
+export type PopoverPosition = 'top' | 'bottom' | 'left' | 'right';
 
 export type PopoverBounds = Partial<ClientRect>;
 

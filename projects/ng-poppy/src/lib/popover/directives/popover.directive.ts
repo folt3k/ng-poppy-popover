@@ -14,7 +14,6 @@ import { POPOVER_CONFIG, PopoverConfig } from '../popover.token';
 import { PopoverService } from '../services/popover.service';
 import { PopoverAppendOptions } from '../models/popover-append-options.model';
 import { BasePopoverDirective } from './base-popover';
-import { PopoverType } from '../popover.interface';
 
 @Directive({
   selector: '[poppyPopover]',
@@ -64,6 +63,7 @@ export class PopoverDirective extends BasePopoverDirective implements AfterViewI
       content: this.poppyPopover,
       closeOnClickOutside: this.closeOnClickOutside,
       innerClass: this.innerClass,
+      position: this.position,
     };
 
     return Injector.create([

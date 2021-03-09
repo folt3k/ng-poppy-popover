@@ -16,7 +16,7 @@ import { Subject } from 'rxjs';
 
 import { PopoverService } from '../services/popover.service';
 import { PopoverAppendOptions } from '../models/popover-append-options.model';
-import { PopoverTrigger, PopoverType } from '../popover.interface';
+import { PopoverPosition, PopoverTrigger, PopoverType } from '../popover.interface';
 
 @Directive()
 export abstract class BasePopoverDirective implements OnDestroy, OnInit {
@@ -27,6 +27,7 @@ export abstract class BasePopoverDirective implements OnDestroy, OnInit {
   @Input() closeOnClickOutside = true;
   @Input() hideOnScroll: boolean = false;
   @Input() innerClass: string;
+  @Input() position: PopoverPosition = 'bottom';
   // Emitters
   @Output() afterClose = new EventEmitter();
   @Output() afterShow = new EventEmitter();
@@ -83,7 +84,11 @@ export abstract class BasePopoverDirective implements OnDestroy, OnInit {
 
   private setOptions(): void {
     if (this.closeOnTriggerAgain === undefined) {
-      this.closeOnTriggerAgain = !(this.type === 'tooltip' || this.trigger === 'hover');
+      this.closeOnTriggerAgain = !(
+        this.type === 'tooltip' ||
+        this.trigger === 'hover' ||
+        this.type === 'context'
+      );
     }
   }
 }

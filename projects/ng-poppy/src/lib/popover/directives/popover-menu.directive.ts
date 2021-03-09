@@ -76,6 +76,7 @@ export class PopoverMenuDirective extends BasePopoverDirective implements AfterV
       closeOnClickItem: this.closeOnClickItem,
       menuRef: this.poppyMenu,
       innerClass: this.innerClass,
+      position: this.position,
     };
 
     return Injector.create([
