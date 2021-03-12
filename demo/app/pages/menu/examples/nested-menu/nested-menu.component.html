@@ -1,0 +1,47 @@
+<button [poppyMenu]="animals">Show nested menu</button>
+
+<poppy-menu #animals="poppyMenu">
+  <button poppy-menu-item [submenu]="vertebrates">Vertebrates</button>
+  <button poppy-menu-item [submenu]="invertebrates">Invertebrates</button>
+</poppy-menu>
+
+<poppy-menu #vertebrates="poppyMenu">
+  <button poppy-menu-item [submenu]="fish">Fishes</button>
+  <button poppy-menu-item [submenu]="amphibians">Amphibians</button>
+  <button poppy-menu-item [submenu]="reptiles">Reptiles</button>
+  <button poppy-menu-item>Birds</button>
+  <button poppy-menu-item>Mammals</button>
+</poppy-menu>
+
+<poppy-menu #invertebrates="poppyMenu">
+  <button poppy-menu-item>Insects</button>
+  <button poppy-menu-item>Molluscs</button>
+  <button poppy-menu-item>Crustaceans</button>
+  <button poppy-menu-item>Corals</button>
+  <button poppy-menu-item>Arachnids</button>
+  <button poppy-menu-item>Velvet worms</button>
+  <button poppy-menu-item>Horseshoe crabs</button>
+</poppy-menu>
+
+<poppy-menu #fish="poppyMenu">
+  <button poppy-menu-item>Baikal oilfish</button>
+  <button poppy-menu-item>Bala shark</button>
+  <button poppy-menu-item>Ballan wrasse</button>
+  <button poppy-menu-item>Bamboo shark</button>
+  <button poppy-menu-item>Banded killifish</button>
+</poppy-menu>
+
+<poppy-menu #amphibians="poppyMenu">
+  <button poppy-menu-item>Sonoran desert toad</button>
+  <button poppy-menu-item>Western toad</button>
+  <button poppy-menu-item>Arroyo toad</button>
+  <button poppy-menu-item>Yosemite toad</button>
+</poppy-menu>
+
+<poppy-menu #reptiles="poppyMenu">
+  <button poppy-menu-item>Banded Day Gecko</button>
+  <button poppy-menu-item>Banded Gila Monster</button>
+  <button poppy-menu-item>Black Tree Monitor</button>
+  <button poppy-menu-item>Blue Spiny Lizard</button>
+  <button poppy-menu-item disabled>Velociraptor</button>
+</poppy-menu>

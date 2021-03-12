@@ -1,0 +1,5 @@
+<ul class="list">
+  <li *ngFor="let item of schema" class="item">
+    <a [routerLink]="item.path" routerLinkActive="item--active">{{ item.label }}</a>
+  </li>
+</ul>

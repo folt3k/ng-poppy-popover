@@ -1,0 +1,37 @@
+import { ComponentFactoryResolver, ComponentRef, EventEmitter, Injector, OnDestroy, ElementRef, NgZone, OnInit } from '@angular/core';
+import { PopoverContentComponent } from '../components/popover-content/popover-content.component';
+import { Subject } from 'rxjs';
+import { PopoverService } from '../services/popover.service';
+import { PopoverAppendOptions } from '../models/popover-append-options.model';
+import { PopoverPosition, PopoverTrigger, PopoverType } from '../popover.interface';
+import * as i0 from "@angular/core";
+export declare abstract class BasePopoverDirective implements OnDestroy, OnInit {
+    protected readonly componentFactoryResolver: ComponentFactoryResolver;
+    protected readonly popoverService: PopoverService;
+    readonly hostElement: ElementRef;
+    protected readonly ngZone: NgZone;
+    trigger: PopoverTrigger;
+    delayClose: number;
+    closeOnTriggerAgain: any;
+    closeOnClickOutside: boolean;
+    hideOnScroll: boolean;
+    innerClass: string;
+    position: PopoverPosition;
+    afterClose: EventEmitter<any>;
+    afterShow: EventEmitter<any>;
+    popoverComponentRef: ComponentRef<PopoverContentComponent>;
+    protected type: PopoverType;
+    protected destroy$: Subject<unknown>;
+    protected constructor(componentFactoryResolver: ComponentFactoryResolver, popoverService: PopoverService, hostElement: ElementRef, ngZone: NgZone);
+    ngOnInit(): void;
+    ngOnDestroy(): void;
+    abstract open(): void;
+    protected abstract getPopoverComponentInjector(): Injector;
+    protected abstract canAppend(): boolean;
+    close(): void;
+    protected appendToLayer(options: PopoverAppendOptions): void;
+    protected remove(popoverRef: ComponentRef<PopoverContentComponent>): void;
+    private setOptions;
+    static ɵfac: i0.ɵɵFactoryDef<BasePopoverDirective, never>;
+    static ɵdir: i0.ɵɵDirectiveDefWithMeta<BasePopoverDirective, never, never, { "trigger": "trigger"; "delayClose": "delayClose"; "closeOnTriggerAgain": "closeOnTriggerAgain"; "closeOnClickOutside": "closeOnClickOutside"; "hideOnScroll": "hideOnScroll"; "innerClass": "innerClass"; "position": "position"; }, { "afterClose": "afterClose"; "afterShow": "afterShow"; }, never>;
+}

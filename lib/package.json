@@ -1,0 +1,22 @@
+{
+  "name": "@ng-poppy/popover",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^10.0.14",
+    "@angular/core": "^10.0.14"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "license": "MIT",
+  "main": "bundles/ng-poppy-popover.umd.js",
+  "module": "fesm2015/ng-poppy-popover.js",
+  "es2015": "fesm2015/ng-poppy-popover.js",
+  "esm2015": "esm2015/ng-poppy-popover.js",
+  "fesm2015": "fesm2015/ng-poppy-popover.js",
+  "typings": "ng-poppy-popover.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by Ivy. This is not allowed.\\nPlease delete and rebuild the package, without compiling with Ivy, before attempting to publish.\\n')\" && exit 1"
+  }
+}
