@@ -8,10 +8,10 @@
   "files": [],
   "references": [
     {
-      "path": "./projects/ng-poppy/tsconfig.lib.json"
+      "path": "./projects/lib/tsconfig.lib.json"
     },
     {
-      "path": "./projects/ng-poppy/tsconfig.spec.json"
+      "path": "./projects/lib/tsconfig.spec.json"
     },
     {
       "path": "./projects/demo/tsconfig.app.json"

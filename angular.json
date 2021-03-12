@@ -3,38 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-poppy": {
+    "lib": {
       "projectType": "library",
-      "root": "projects/ng-poppy",
-      "sourceRoot": "projects/ng-poppy/src",
+      "root": "projects/lib",
+      "sourceRoot": "projects/lib/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/ng-poppy/tsconfig.lib.json",
-            "project": "projects/ng-poppy/ng-package.json"
+            "tsConfig": "projects/lib/tsconfig.lib.json",
+            "project": "projects/lib/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ng-poppy/tsconfig.lib.prod.json"
+              "tsConfig": "projects/lib/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ng-poppy/src/test.ts",
-            "tsConfig": "projects/ng-poppy/tsconfig.spec.json",
-            "karmaConfig": "projects/ng-poppy/karma.conf.js"
+            "main": "projects/lib/src/test.ts",
+            "tsConfig": "projects/lib/tsconfig.spec.json",
+            "karmaConfig": "projects/lib/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ng-poppy/tsconfig.lib.json",
-              "projects/ng-poppy/tsconfig.spec.json"
+              "projects/lib/tsconfig.lib.json",
+              "projects/lib/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -165,5 +165,5 @@
         }
       }
     }},
-  "defaultProject": "ng-poppy"
+  "defaultProject": "lib"
 }

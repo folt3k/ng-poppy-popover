@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { PopoverModule } from 'ng-poppy';
+import { PopoverModule } from 'lib';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { BasicModule } from './pages/basic/basic.module';

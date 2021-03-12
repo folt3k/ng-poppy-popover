@@ -16,9 +16,9 @@
       "dom"
     ],
     "paths": {
-      "ng-poppy": [
-        "dist/ng-poppy/ng-poppy",
-        "dist/ng-poppy"
+      "lib": [
+        "dist/lib/lib",
+        "dist/lib"
       ]
     }
   }

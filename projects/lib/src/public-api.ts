@@ -1,5 +1,5 @@
 /*
- * Public API Surface of ng-poppy
+ * Public API Surface of lib
  */
 
 export * from './lib/popover/popover.module';
