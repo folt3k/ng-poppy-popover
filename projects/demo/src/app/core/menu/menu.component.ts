@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
 
 export interface MenuItem {
   label: string;
@@ -26,33 +24,12 @@ export class MenuComponent implements OnInit {
       path: '/components/menu',
     },
     {
-      label: 'Select',
-      path: '/components/select',
-    },
-    {
-      label: 'Multiselect',
-      path: '/components/multiselect',
-    },
-    {
       label: 'Tooltip',
       path: '/components/tooltip',
     },
   ];
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.router.events
-      .pipe(
-        filter((e) => e instanceof NavigationEnd),
-        map((e: NavigationEnd) => e.urlAfterRedirects)
-      )
-      .subscribe((path) => {
-        this.updateActiveMenuItem(path);
-      });
-  }
-
-  private updateActiveMenuItem(path: string): void {
-    this.schema = this.schema.map((item) => ({ ...item, active: path === item.path }));
-  }
+  ngOnInit(): void {}
 }

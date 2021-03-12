@@ -1,13 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "~highlight.js/scss/docco";
+@import '~highlight.js/scss/docco';
 
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  color: rgba(0,0,0,.85);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 body {
@@ -21,7 +22,7 @@ main {
 }
 
 a {
-  color: rgba(0,0,0,.85);
+  color: rgba(0, 0, 0, 0.85);
   text-decoration: none;
 }
 
@@ -30,11 +31,49 @@ a {
   background-color: #f0f0f0;
 }
 
-.example, p {
+.example,
+p {
   margin: 1.4rem 0;
 }
 
 demo-widget {
   display: block;
   margin-bottom: 3rem;
+}
+
+hr {
+  margin-bottom: 1rem;
+}
+
+h2 {
+  padding: 0;
+  margin: 3rem 0 0 0;
+}
+
+.container {
+  width: 100%;
+  margin-left: 5rem;
+  padding-bottom: 8rem;
+}
+
+form {
+  max-width: 300px;
+}
+
+demo-widget {
+  display: block;
+  margin-bottom: 3rem;
+}
+
+button:not(.popover-menu-item) {
+  margin-right: .8rem;
+  border-radius: 4px;
+  padding: 1rem 1rem;
+  outline: 0;
+  border: 0;
+  background-color: #40a070;
+  box-shadow: 2px 2px 5px #eae9e9;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
 }

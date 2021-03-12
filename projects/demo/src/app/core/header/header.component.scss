@@ -7,7 +7,7 @@
   position: relative;
   box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
   border-bottom: 1px solid #d4dadf;
-  background-color: #fff;
+  background-color: #40a070;
 }
 
 .logo {
@@ -15,8 +15,9 @@
   align-items: center;
 
   h1 {
+    color: white;
     margin: 0 0 0 .4rem;
     font-size: 1.6rem;
-    font-weight: normal;
+    font-weight: 600;
   }
 }
