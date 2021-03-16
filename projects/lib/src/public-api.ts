@@ -2,7 +2,7 @@
  * Public API Surface of lib
  */
 
-export * from './lib/popover/popover.module';
-export * from './lib/popover/directives';
-export * from './lib/popover/components/popover-select/popover-select.component';
-export * from './lib/popover/components/popover-menu/popover-menu.component';
+export * from './popover/popover.module';
+export * from './popover/directives';
+export * from './popover/components/popover-select/popover-select.component';
+export * from './popover/components/popover-menu/popover-menu.component';

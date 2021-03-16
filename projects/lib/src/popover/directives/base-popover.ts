@@ -11,12 +11,13 @@ import {
   Directive,
   OnInit,
 } from '@angular/core';
-import { PopoverContentComponent } from '../components/popover-content/popover-content.component';
-import { Subject } from 'rxjs';
+import { merge, Observable, Subject } from 'rxjs';
 
+import { PopoverContentComponent } from '../components/popover-content/popover-content.component';
 import { PopoverService } from '../services/popover.service';
 import { PopoverAppendOptions } from '../models/popover-append-options.model';
 import { PopoverPosition, PopoverTrigger, PopoverType } from '../popover.interface';
+import { mapTo } from 'rxjs/operators';
 
 @Directive()
 export abstract class BasePopoverDirective implements OnDestroy, OnInit {
@@ -33,6 +34,7 @@ export abstract class BasePopoverDirective implements OnDestroy, OnInit {
   @Output() afterShow = new EventEmitter();
 
   popoverComponentRef: ComponentRef<PopoverContentComponent>;
+  isOpen$: Observable<boolean>;
   protected type: PopoverType = 'popover';
   protected destroy$ = new Subject();
 
@@ -45,6 +47,7 @@ export abstract class BasePopoverDirective implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     this.setOptions();
+    this.isOpen$ = merge(this.afterShow.pipe(mapTo(true)), this.afterClose.pipe(mapTo(false)));
   }
 
   ngOnDestroy(): void {

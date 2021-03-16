@@ -13,7 +13,7 @@ export class PopoverRemoveOnClickDirective {
 
   remove(): void {
     setTimeout(() => {
-      const parentElement = this.host.nativeElement.closest('poppy-content');
+      const parentElement = this.host.nativeElement.closest('poppy-popover');
       this.popoverService.removeByNativeElementRef(parentElement);
     });
   }

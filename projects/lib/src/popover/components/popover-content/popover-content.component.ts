@@ -29,7 +29,7 @@ import { PopoverMenuItemDirective } from '../../directives/popover-menu-item.dir
 import { PopoverMenuComponent } from '../popover-menu/popover-menu.component';
 
 @Component({
-  selector: 'poppy-content',
+  selector: 'poppy-popover',
   templateUrl: './popover-content.component.html',
   styleUrls: ['./popover-content.component.scss'],
   animations: [fadeInAnimation],
