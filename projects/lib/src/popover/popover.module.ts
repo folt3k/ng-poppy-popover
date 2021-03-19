@@ -15,7 +15,6 @@ import {
   PopoverOptionDirective,
   PopoverRemoveOnClickDirective,
 } from './directives';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     PopoverOptionDirective,
     TooltipDirective,
   ],
-  imports: [CommonModule, BrowserAnimationsModule, LayerModule],
+  imports: [CommonModule, LayerModule],
   exports: [
     PopoverDirective,
     PopoverMenuDirective,
