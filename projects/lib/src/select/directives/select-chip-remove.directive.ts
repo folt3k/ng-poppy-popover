@@ -1,18 +1,18 @@
 import { Directive, Input, HostListener } from '@angular/core';
-import { PopoverSelectComponent } from '../components/popover-select/popover-select.component';
+import { SelectComponent } from '../select.component';
 
 @Directive({
-  selector: '[poppyChipRemove]'
+  selector: '[poppyChipRemove]',
 })
-export class PopoverChipRemoveDirective {
+export class SelectChipRemoveDirective {
   @Input() poppyChipRemove: any;
 
   @HostListener('click', ['$event'])
-  onClick(event: Event) {
+  onClick(event: Event): void {
     this.remove(event);
   }
 
-  constructor(private selectComponentRef: PopoverSelectComponent) {}
+  constructor(private selectComponentRef: SelectComponent) {}
 
   remove(event: Event): void {
     if (this.selectComponentRef) {

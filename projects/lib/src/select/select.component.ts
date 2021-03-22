@@ -23,30 +23,26 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, ControlContainer, NG_VALIDATOR
 import { debounceTime, map, take, takeUntil, tap } from 'rxjs/operators';
 import { fromEvent, Observable, Subject } from 'rxjs';
 
-import { SelectOption, DisplayedSelectOption } from './popover-select.interface';
-import { PopoverChipDirective, PopoverMenuDirective, PopoverOptionDirective } from '../../directives';
+import { SelectOption, DisplayedSelectOption } from './select.interface';
+import { SelectChipDirective, SelectOptionDirective } from './directives';
+import { PopoverMenuDirective } from '../popover/directives';
 
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'poppy-select',
-  templateUrl: './popover-select.component.html',
-  styleUrls: ['./popover-select.component.scss'],
+  templateUrl: './select.component.html',
+  styleUrls: ['./select.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => PopoverSelectComponent),
-      multi: true,
-    },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => PopoverSelectComponent),
+      useExisting: forwardRef(() => SelectComponent),
       multi: true,
     },
   ],
 })
-export class PopoverSelectComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit, ControlValueAccessor {
+export class SelectComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit, ControlValueAccessor {
   @Input() options: SelectOption[] = [];
   @Input() async: (searchPhrase?: string) => Observable<any>;
   @Input() value: any;
@@ -62,8 +58,8 @@ export class PopoverSelectComponent implements OnInit, OnChanges, OnDestroy, Aft
 
   @ViewChild('input') inputEl: ElementRef;
   @ViewChild(PopoverMenuDirective) menuRef: PopoverMenuDirective;
-  @ContentChild(PopoverChipDirective) chipTemplate: PopoverChipDirective;
-  @ContentChild(PopoverOptionDirective) optionTemplate: PopoverOptionDirective;
+  @ContentChild(SelectChipDirective) chipTemplate: SelectChipDirective;
+  @ContentChild(SelectOptionDirective) optionTemplate: SelectOptionDirective;
 
   selectedOptions: SelectOption[] = [];
   displayedOptions: DisplayedSelectOption[] = [];
@@ -183,7 +179,7 @@ export class PopoverSelectComponent implements OnInit, OnChanges, OnDestroy, Aft
     }
 
     if (!this.multiselect) {
-      this.inputEl.nativeElement.value = this.bindLabel ? this.selectedOptions[0][this.bindLabel] : '';
+      // this.inputEl.nativeElement.value = this.bindLabel ? this.selectedOptions[0][this.bindLabel] : '';
     }
 
     this.emitChange();
@@ -219,7 +215,7 @@ export class PopoverSelectComponent implements OnInit, OnChanges, OnDestroy, Aft
       if (typeof this.selectedOptions[0] === 'object' && this.bindLabel) {
         return this.selectedOptions[0][this.bindLabel];
       }
-      return '';
+      return this.selectedOptions[0];
     }
     return '';
   }
@@ -248,7 +244,7 @@ export class PopoverSelectComponent implements OnInit, OnChanges, OnDestroy, Aft
 
   private onOptionsChange(): void {
     this.displayedOptions = [...this.options].map((option) => ({
-      ...option,
+      ...(typeof option === 'object' ? { ...option } : { value: option, label: option }),
       selected: false,
       hidden: false,
     }));
@@ -301,9 +297,9 @@ export class PopoverSelectComponent implements OnInit, OnChanges, OnDestroy, Aft
   }
 
   private onCloseMenu(): void {
-    this.inputEl.nativeElement.value = !!this.selectedOptions.length
-      ? this.selectedOptions[0][this.bindLabel]
-      : null;
+    // this.inputEl.nativeElement.value = !!this.selectedOptions.length
+    //   ? this.selectedOptions[0][this.bindLabel]
+    //   : null;
     this.displayedOptions.forEach((option, index) => {
       this.displayedOptions[index].hidden = false;
     });
@@ -395,7 +391,6 @@ export class PopoverSelectComponent implements OnInit, OnChanges, OnDestroy, Aft
       // tslint:disable-next-line:triple-equals
       return item[this.bindValue] == comparedTo;
     }
-
     return item === comparedTo;
   }
 }

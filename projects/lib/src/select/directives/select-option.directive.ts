@@ -1,9 +1,9 @@
 import { Directive, TemplateRef } from '@angular/core';
 
 @Directive({
-  selector: '[poppy-chip]',
-  exportAs: 'poppyChip'
+  selector: '[poppy-option]',
+  exportAs: 'poppyOption',
 })
-export class PopoverChipDirective {
+export class SelectOptionDirective {
   constructor(public template: TemplateRef<any>) {}
 }

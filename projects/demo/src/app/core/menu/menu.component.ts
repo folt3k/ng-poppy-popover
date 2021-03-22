@@ -24,6 +24,14 @@ export class MenuComponent implements OnInit {
       path: '/components/menu',
     },
     {
+      label: 'Select',
+      path: '/components/select',
+    },
+    {
+      label: 'Multiselect',
+      path: '/components/multiselect',
+    },
+    {
       label: 'Tooltip',
       path: '/components/tooltip',
     },
