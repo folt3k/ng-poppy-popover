@@ -1,5 +1,5 @@
 {
-  "name": "@ng-poppy/popover",
+  "name": "folt3kpopover",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^10.0.14",
