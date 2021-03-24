@@ -27,6 +27,7 @@ export interface PopoverConfig {
   multiselect?: boolean;
   closeOnClickOutside?: boolean;
   closeOnClickItem?: boolean;
+  stickyToTrigger?: boolean;
   selectable?: boolean;
   innerClass?: string;
   position?: PopoverPosition;

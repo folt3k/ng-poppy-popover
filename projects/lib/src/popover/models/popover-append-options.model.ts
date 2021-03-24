@@ -7,6 +7,7 @@ export class PopoverAppendOptions {
   delayClose: number;
   closeOnTriggerAgain: boolean;
   hideOnScroll: boolean;
+  stickyToTrigger: boolean;
 
   constructor(options: IPopoverAppendOptions) {
     this.type = options.type;
@@ -15,5 +16,6 @@ export class PopoverAppendOptions {
     this.delayClose = Number.isInteger(options.delayClose) ? options.delayClose : null;
     this.closeOnTriggerAgain = !!options.closeOnTriggerAgain;
     this.hideOnScroll = !!options.hideOnScroll;
+    this.stickyToTrigger = !!options.stickyToTrigger;
   }
 }

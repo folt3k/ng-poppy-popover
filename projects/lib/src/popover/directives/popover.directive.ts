@@ -62,6 +62,7 @@ export class PopoverDirective extends BasePopoverDirective implements AfterViewI
       triggerDirective: this,
       content: this.poppyPopover,
       closeOnClickOutside: this.closeOnClickOutside,
+      stickyToTrigger: this.stickyToTrigger,
       innerClass: this.innerClass,
       position: this.position,
     };
@@ -90,6 +91,7 @@ export class PopoverDirective extends BasePopoverDirective implements AfterViewI
     let popoverHovered = false;
     let hostHovered = false;
     let isMouseLeftBeforeDelayTimePast = false;
+    const delay = this.type === 'tooltip' ? 0 : 300;
 
     merge(
       fromEvent(this.hostElement.nativeElement, 'mouseenter'),
@@ -111,7 +113,7 @@ export class PopoverDirective extends BasePopoverDirective implements AfterViewI
               }
             });
         }),
-        switchMap(() => timer(300))
+        switchMap(() => timer(delay))
       )
       .subscribe(() => {
         const isHostElementStillInDOM = document.body.contains(this.hostElement.nativeElement);

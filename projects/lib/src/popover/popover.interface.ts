@@ -41,6 +41,7 @@ export interface IPopoverAppendOptions {
   delayClose?: number;
   closeOnTriggerAgain?: boolean;
   hideOnScroll?: boolean;
+  stickyToTrigger?: boolean;
   innerClass?: string;
 }
 

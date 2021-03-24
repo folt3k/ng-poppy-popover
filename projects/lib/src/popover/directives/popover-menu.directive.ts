@@ -74,6 +74,7 @@ export class PopoverMenuDirective extends BasePopoverDirective implements AfterV
       triggerDirective: this,
       closeOnClickOutside: this.closeOnClickOutside,
       closeOnClickItem: this.closeOnClickItem,
+      stickyToTrigger: this.stickyToTrigger,
       menuRef: this.poppyMenu,
       innerClass: this.innerClass,
       position: this.position,

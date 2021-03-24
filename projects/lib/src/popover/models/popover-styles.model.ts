@@ -54,6 +54,10 @@ export class PopoverStyles {
       this.popover.popoverWrapperEl.nativeElement.style.padding = padding;
     }
 
+    if (this.config.stickyToTrigger) {
+      this.popover.popoverWrapperEl.nativeElement.style.maxWidth = 'unset';
+    }
+
     this.hostElement.nativeElement.style.visibility = 'hidden';
 
     setTimeout(() => {
@@ -188,7 +192,10 @@ export class PopoverStyles {
 
       this.hostElement.nativeElement.style.minWidth = this.initHostElementWidth + POSITION_MEASURE_UNIT;
 
-      if (!this.isMenuType) {
+      if (this.config.stickyToTrigger) {
+        this.hostElement.nativeElement.style.minWidth = triggerBounds.width + POSITION_MEASURE_UNIT;
+        this.setPositionStyle('left', triggerBounds.left);
+      } else if (!this.isMenuType) {
         if (hostElBounds.width > windowWidth || this.initHostElementWidth > windowWidth - 30) {
           this.hostElement.nativeElement.style.width = windowWidth - 30 + POSITION_MEASURE_UNIT;
           this.hostElement.nativeElement.style.minWidth = windowWidth - 30 + POSITION_MEASURE_UNIT;

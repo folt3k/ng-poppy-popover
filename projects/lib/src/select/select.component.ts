@@ -103,7 +103,7 @@ export class SelectComponent implements OnInit, OnChanges, OnDestroy, AfterViewI
     });
 
     this.menuRef.afterClose.pipe(take(1)).subscribe(() => {
-      // TODO: mark as touched..
+      this.propagateTouch();
       // if (this.control) {
       //   this.control.markAsTouched();
       //   this.control.updateValueAndValidity();
@@ -148,11 +148,15 @@ export class SelectComponent implements OnInit, OnChanges, OnDestroy, AfterViewI
     this.propagateChange = fn;
   }
 
-  registerOnTouched(): void {}
+  registerOnTouched(fn: any): void {
+    this.propagateTouch = fn;
+  }
 
   setDisabledState(isDisabled: boolean): void {}
 
   propagateChange = (value) => {};
+
+  propagateTouch = () => {};
 
   getDisplayLabel(option: SelectOption): string {
     return this.bindLabel ? option[this.bindLabel] : '';

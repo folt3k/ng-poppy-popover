@@ -1,52 +1,48 @@
-  <div class="poppy-select" [poppyMenu]="menu" [closeOnClickItem]="!multiselect">
-    <div class="poppy-select__content">
-      <div *ngIf="multiselect" class="poppy-select__multiselect">
-        <div *ngFor="let chip of displayedChips" class="poppy-select__chip">
-          <ng-container *ngIf="chipTemplate">
-            <ng-container
-              [ngTemplateOutlet]="chipTemplate.template"
-              [ngTemplateOutletContext]="{ $implicit: chip }"
-            ></ng-container>
-          </ng-container>
-          <div *ngIf="!chipTemplate" class="poppy-chip">
-            <div class="poppy-chip__content">{{ getDisplayLabel(chip) }}</div>
-            <div class="poppy-chip__close" (click)="closeChip(chip, $event)">
-              &#10006;
-            </div>
-          </div>
+<div class="poppy-select" [poppyMenu]="menu" [closeOnClickItem]="!multiselect" [stickyToTrigger]="true">
+  <div class="poppy-select__content">
+    <div *ngIf="multiselect" class="poppy-select__multiselect">
+      <div *ngFor="let chip of displayedChips" class="poppy-select__chip">
+        <ng-container *ngIf="chipTemplate">
+          <ng-container
+            [ngTemplateOutlet]="chipTemplate.template"
+            [ngTemplateOutletContext]="{ $implicit: chip }"
+          ></ng-container>
+        </ng-container>
+        <div *ngIf="!chipTemplate" class="poppy-chip">
+          <div class="poppy-chip__content">{{ getDisplayLabel(chip) }}</div>
+          <div class="poppy-chip__close" (click)="closeChip(chip, $event)">&#10006;</div>
         </div>
-        <span class="poppy-select__placeholder" *ngIf="!selectedOptions.length">{{ placeholder }}</span>
       </div>
-
-      <input
-        #input
-        [hidden]="multiselect"
-        [placeholder]="placeholder"
-        [value]="getDisplayValue()"
-        [readOnly]="!searchable"
-        type="text"
-      />
-
-      <div *ngIf="clearable && !multiselect && !!getDisplayValue()" class="poppy-select__clear">
-        <button class="clear-btn" (click)="clear($event)">&times;</button>
-      </div>
-
-      <div *ngIf="!asyncLoading" class="poppy-select__arrow">
-<!--        <span *ngIf="isMenuOpen" class="material-icons">-->
-<!--          keyboard_arrow_up-->
-<!--        </span>-->
-<!--        <span *ngIf="!isMenuOpen" class="material-icons">-->
-<!--          keyboard_arrow_down-->
-<!--        </span>-->
-      </div>
-
-      <ng-container *ngIf="asyncLoading">
-        <div class="poppy-select__loader">
-          loader..
-        </div>
-      </ng-container>
+      <span class="poppy-select__placeholder" *ngIf="!selectedOptions.length">{{ placeholder }}</span>
     </div>
+
+    <input
+      #input
+      [hidden]="multiselect"
+      [placeholder]="placeholder"
+      [value]="getDisplayValue()"
+      [readOnly]="!searchable"
+      type="text"
+    />
+
+    <div *ngIf="clearable && !multiselect && !!getDisplayValue()" class="poppy-select__clear">
+      <button class="clear-btn" (click)="clear($event)">&times;</button>
+    </div>
+
+    <div *ngIf="!asyncLoading" class="poppy-select__arrow">
+      <!--        <span *ngIf="isMenuOpen" class="material-icons">-->
+      <!--          keyboard_arrow_up-->
+      <!--        </span>-->
+      <!--        <span *ngIf="!isMenuOpen" class="material-icons">-->
+      <!--          keyboard_arrow_down-->
+      <!--        </span>-->
+    </div>
+
+    <ng-container *ngIf="asyncLoading">
+      <div class="poppy-select__loader">loader..</div>
+    </ng-container>
   </div>
+</div>
 
 <poppy-menu #menu="poppyMenu">
   <li

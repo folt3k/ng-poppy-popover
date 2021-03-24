@@ -27,6 +27,7 @@ export abstract class BasePopoverDirective implements OnDestroy, OnInit {
   @Input() closeOnTriggerAgain = undefined;
   @Input() closeOnClickOutside = true;
   @Input() hideOnScroll: boolean = false;
+  @Input() stickyToTrigger: boolean = false;
   @Input() innerClass: string;
   @Input() position: PopoverPosition = 'bottom';
   // Emitters
@@ -74,6 +75,7 @@ export abstract class BasePopoverDirective implements OnDestroy, OnInit {
       delayClose: this.delayClose,
       closeOnTriggerAgain: this.closeOnTriggerAgain,
       hideOnScroll: this.hideOnScroll,
+      stickyToTrigger: this.stickyToTrigger,
     };
 
     this.popoverComponentRef = this.popoverService.append(injector, this, opts);
