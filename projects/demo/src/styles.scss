@@ -65,7 +65,7 @@ demo-widget {
   margin-bottom: 3rem;
 }
 
-button:not(.popover-menu-item) {
+button:not(.popover-menu-item, .poppy-clear-btn) {
   margin-right: .8rem;
   border-radius: 4px;
   padding: 1rem 1rem;

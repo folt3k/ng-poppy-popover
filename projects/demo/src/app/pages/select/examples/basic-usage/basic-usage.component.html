@@ -4,5 +4,11 @@
   [bindValue]="'value'"
   [multiselect]="true"
 ></poppy-select>
+<br>
+<poppy-select
+  [(ngModel)]="selectedOption"
+  [options]="options"
+  [bindValue]="'value'"
+></poppy-select>
 
 <p>Selected option: {{ selectedOption | json }}</p>
