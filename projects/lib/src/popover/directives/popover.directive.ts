@@ -2,10 +2,10 @@ import {
   AfterViewInit,
   ComponentFactoryResolver,
   Directive,
-  ElementRef,
+  ElementRef, EventEmitter,
   Injector,
   Input,
-  NgZone,
+  NgZone, Output,
   TemplateRef,
 } from '@angular/core';
 import { fromEvent, merge, timer } from 'rxjs';
@@ -15,7 +15,7 @@ import { POPOVER_CONFIG, PopoverConfig } from '../popover.token';
 import { PopoverService } from '../services/popover.service';
 import { PopoverAppendOptions } from '../models/popover-append-options.model';
 import { BasePopoverDirective } from './base-popover';
-import { PopoverTrigger } from '../popover.interface';
+import {PopoverPosition, PopoverTrigger} from '../popover.interface';
 
 @Directive({
   selector: '[poppyPopover]',
@@ -23,8 +23,18 @@ import { PopoverTrigger } from '../popover.interface';
 })
 export class PopoverDirective extends BasePopoverDirective implements AfterViewInit {
   @Input() poppyPopover: TemplateRef<HTMLElement> | string;
-  @Input() innerClass: string;
   @Input() trigger: PopoverTrigger = 'click';
+  // Options
+  @Input() delayClose: number = null;
+  @Input() closeOnTriggerAgain = undefined;
+  @Input() closeOnClickOutside = true;
+  @Input() hideOnScroll: boolean = false;
+  @Input() stickyToTrigger: boolean = false;
+  @Input() innerClass: string;
+  @Input() position: PopoverPosition = 'bottom';
+  // Emitters
+  @Output() afterClose = new EventEmitter();
+  @Output() afterShow = new EventEmitter();
 
   constructor(
     protected readonly componentFactoryResolver: ComponentFactoryResolver,

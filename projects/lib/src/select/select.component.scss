@@ -131,6 +131,8 @@ $tag-size-sm: 24px;
   width: 10px;
   height: 10px;
   color: #939393;
+  vertical-align: middle;
+  box-sizing: content-box;
 }
 
 .poppy-arrow::before {
@@ -141,10 +143,10 @@ $tag-size-sm: 24px;
   display: inline-block;
   height: 6px;
   left: 0;
-  position: relative;
   top: 1px;
   vertical-align: middle;
   width: 6px;
+  box-sizing: content-box;
 }
 
 .poppy-arrow--up:before {
@@ -152,13 +154,14 @@ $tag-size-sm: 24px;
 }
 
 .poppy-arrow--down:before {
-  top: -3px;
+  top: -2px;
   transform: rotate(135deg);
 }
 
 .poppy-clear-btn {
   background: transparent;
   border: 0;
+  padding: 0 6px;
   cursor: pointer;
   font-size: 22px;
   outline: 0;

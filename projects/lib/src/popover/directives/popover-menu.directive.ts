@@ -2,15 +2,15 @@ import {
   AfterViewInit,
   ComponentFactoryResolver,
   Directive,
-  ElementRef,
+  ElementRef, EventEmitter,
   Injector,
   Input,
-  NgZone,
+  NgZone, Output,
 } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { POPOVER_CONFIG, PopoverConfig } from '../popover.token';
-import { PopoverBounds, PopoverContextMenuPosition, PopoverMenuType } from '../popover.interface';
+import {PopoverBounds, PopoverContextMenuPosition, PopoverMenuType, PopoverPosition, PopoverTrigger} from '../popover.interface';
 import { PopoverService } from '../services/popover.service';
 import { PopoverAppendOptions } from '../models/popover-append-options.model';
 import { BasePopoverDirective } from './base-popover';
@@ -24,6 +24,18 @@ export class PopoverMenuDirective extends BasePopoverDirective implements AfterV
   @Input() poppyMenu: PopoverMenuComponent;
   @Input() type: PopoverMenuType = 'menu';
   @Input() closeOnClickItem: boolean = true;
+  @Input() trigger: PopoverTrigger = 'click';
+  // Options
+  @Input() delayClose: number = null;
+  @Input() closeOnTriggerAgain = undefined;
+  @Input() closeOnClickOutside = true;
+  @Input() hideOnScroll: boolean = false;
+  @Input() stickyToTrigger: boolean = false;
+  @Input() innerClass: string;
+  @Input() position: PopoverPosition = 'bottom';
+  // Emitters
+  @Output() afterClose = new EventEmitter();
+  @Output() afterShow = new EventEmitter();
 
   private contextMenuPosition: PopoverContextMenuPosition;
 

@@ -1,22 +1,33 @@
 import {
   ComponentFactoryResolver,
   Directive,
-  ElementRef,
+  ElementRef, EventEmitter,
   Input,
   NgZone,
-  OnInit,
+  OnInit, Output,
   TemplateRef,
 } from '@angular/core';
 
 import { PopoverDirective } from './popover.directive';
 import { PopoverService } from '../services/popover.service';
-import { PopoverTrigger, PopoverType } from '../popover.interface';
+import {PopoverPosition, PopoverTrigger, PopoverType} from '../popover.interface';
 
 @Directive({
   selector: '[poppyTooltip]',
 })
 export class TooltipDirective extends PopoverDirective implements OnInit {
   @Input() poppyTooltip: string | TemplateRef<any>;
+  // Options
+  @Input() delayClose: number = null;
+  @Input() closeOnTriggerAgain = undefined;
+  @Input() closeOnClickOutside = true;
+  @Input() hideOnScroll: boolean = false;
+  @Input() stickyToTrigger: boolean = false;
+  @Input() innerClass: string;
+  @Input() position: PopoverPosition = 'bottom';
+  // Emitters
+  @Output() afterClose = new EventEmitter();
+  @Output() afterShow = new EventEmitter();
 
   trigger: PopoverTrigger = 'hover';
   type: PopoverType = 'tooltip';
