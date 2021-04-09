@@ -10,10 +10,12 @@ import {
 } from '@angular/core';
 import { fromEvent, merge, timer } from 'rxjs';
 import { takeUntil, debounceTime, tap, switchMap, take } from 'rxjs/operators';
+
 import { POPOVER_CONFIG, PopoverConfig } from '../popover.token';
 import { PopoverService } from '../services/popover.service';
 import { PopoverAppendOptions } from '../models/popover-append-options.model';
 import { BasePopoverDirective } from './base-popover';
+import { PopoverTrigger } from '../popover.interface';
 
 @Directive({
   selector: '[poppyPopover]',
@@ -21,6 +23,8 @@ import { BasePopoverDirective } from './base-popover';
 })
 export class PopoverDirective extends BasePopoverDirective implements AfterViewInit {
   @Input() poppyPopover: TemplateRef<HTMLElement> | string;
+  @Input() innerClass: string;
+  @Input() trigger: PopoverTrigger = 'click';
 
   constructor(
     protected readonly componentFactoryResolver: ComponentFactoryResolver,
