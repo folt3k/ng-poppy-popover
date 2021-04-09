@@ -26,16 +26,12 @@
     />
 
     <div *ngIf="clearable && !multiselect && !!getDisplayValue()" class="poppy-select__clear">
-      <button class="clear-btn" (click)="clear($event)">&times;</button>
+      <button class="poppy-clear-btn" (click)="clear($event)">&times;</button>
     </div>
 
     <div *ngIf="!asyncLoading" class="poppy-select__arrow">
-      <!--        <span *ngIf="isMenuOpen" class="material-icons">-->
-      <!--          keyboard_arrow_up-->
-      <!--        </span>-->
-      <!--        <span *ngIf="!isMenuOpen" class="material-icons">-->
-      <!--          keyboard_arrow_down-->
-      <!--        </span>-->
+      <span *ngIf="!!(menuRef.isOpen$ | async)" class="poppy-arrow poppy-arrow--up"></span>
+      <span *ngIf="!(menuRef.isOpen$ | async)" class="poppy-arrow poppy-arrow--down"></span>
     </div>
 
     <ng-container *ngIf="asyncLoading">

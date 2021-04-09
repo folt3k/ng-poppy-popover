@@ -57,7 +57,7 @@ export class SelectComponent implements OnInit, OnChanges, OnDestroy, AfterViewI
   @Output() changed: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild('input') inputEl: ElementRef;
-  @ViewChild(PopoverMenuDirective) menuRef: PopoverMenuDirective;
+  @ViewChild(PopoverMenuDirective, { static: true }) menuRef: PopoverMenuDirective;
   @ContentChild(SelectChipDirective) chipTemplate: SelectChipDirective;
   @ContentChild(SelectOptionDirective) optionTemplate: SelectOptionDirective;
 
@@ -65,7 +65,6 @@ export class SelectComponent implements OnInit, OnChanges, OnDestroy, AfterViewI
   displayedOptions: DisplayedSelectOption[] = [];
   displayedChips: SelectOption[] = [];
   asyncLoading: boolean = false;
-  isMenuOpen: boolean = false;
   private destroy$ = new Subject();
 
   constructor(
@@ -90,7 +89,6 @@ export class SelectComponent implements OnInit, OnChanges, OnDestroy, AfterViewI
 
   ngAfterViewInit(): void {
     this.menuRef.afterClose.pipe(takeUntil(this.destroy$)).subscribe(() => {
-      this.isMenuOpen = false;
       if (!this.multiselect) {
         this.onCloseMenu();
       }
@@ -98,7 +96,6 @@ export class SelectComponent implements OnInit, OnChanges, OnDestroy, AfterViewI
     });
 
     this.menuRef.afterShow.pipe(takeUntil(this.destroy$)).subscribe(() => {
-      this.isMenuOpen = true;
       this.cdr.detectChanges();
     });
 
