@@ -126,22 +126,25 @@ $tag-size-sm: 24px;
 // arrow
 
 .poppy-arrow {
+  position: relative;
   display: inline-block;
+  width: 10px;
+  height: 10px;
   color: #939393;
-  margin-top: 1px;
 }
 
 .poppy-arrow::before {
+  position: absolute;
   border-style: solid;
   border-width: 2px 2px 0 0;
   content: '';
   display: inline-block;
-  height: 7px;
-  left: 5px;
+  height: 6px;
+  left: 0;
   position: relative;
-  top: 5px;
-  vertical-align: top;
-  width: 7px;
+  top: 1px;
+  vertical-align: middle;
+  width: 6px;
 }
 
 .poppy-arrow--up:before {
@@ -149,7 +152,7 @@ $tag-size-sm: 24px;
 }
 
 .poppy-arrow--down:before {
-  top: 0;
+  top: -3px;
   transform: rotate(135deg);
 }
 
