@@ -23,6 +23,7 @@
       [value]="getDisplayValue()"
       [readOnly]="!searchable"
       type="text"
+      [disabled]='!searchable'
     />
 
     <div *ngIf="clearable && !multiselect && !!getDisplayValue()" class="poppy-select__clear">

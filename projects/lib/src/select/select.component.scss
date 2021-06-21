@@ -32,6 +32,12 @@ $tag-size-sm: 24px;
     border: 0;
     outline: 0;
     background-color: transparent;
+    font-size: inherit;
+  }
+
+  input:disabled {
+    color: black;
+    opacity: 1;
   }
 }
 
